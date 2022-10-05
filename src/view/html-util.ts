@@ -1,4 +1,4 @@
-export function escapeSpecialChars(str) {
+export function escapeSpecialChars(str: string) {
   return str
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -7,13 +7,16 @@ export function escapeSpecialChars(str) {
     .replace(/'/g, "&#039;");
 }
 
-export function htmlToElemnt(html) {
+export function htmlToElemnt(html: string) {
   const template = document.createElement("template");
   template.innerHTML = html;
   return template.content.firstElementChild;
 }
 
-export function element(strings, ...values) {
+export function element(
+  strings: TemplateStringsArray,
+  ...values: Array<string>
+) {
   const htmlString = strings.reduce((result, str, i) => {
     const value = values[i - 1];
     if (typeof value === "string") {
@@ -25,7 +28,12 @@ export function element(strings, ...values) {
   return htmlToElemnt(htmlString);
 }
 
-export function render(bodyElement, containerElement) {
+export function render(
+  bodyElement: Element | null,
+  containerElement: HTMLDivElement | null
+) {
+  if (!bodyElement) throw new Error("bodyElementはnullです。");
+  if (!containerElement) throw new Error("containerElementはnullです。");
   containerElement.innerHTML = "";
   containerElement.appendChild(bodyElement);
 }

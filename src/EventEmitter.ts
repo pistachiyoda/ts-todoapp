@@ -1,15 +1,16 @@
 export class EventEmitter {
-  #listeners = new Map();
+  #listeners = new Map<string, Set<() => void>>();
 
-  addEventListener(type, listner) {
+  addEventListener(type: string, listner: () => void) {
     if (!this.#listeners.has(type)) {
       this.#listeners.set(type, new Set());
     }
     const listenerSet = this.#listeners.get(type);
+    if (!listenerSet) throw new Error("Required");
     listenerSet.add(listner);
   }
 
-  emit(type) {
+  emit(type: string) {
     const listenerSet = this.#listeners.get(type);
     if (!listenerSet) {
       return;
@@ -19,14 +20,14 @@ export class EventEmitter {
     });
   }
 
-  removeEventListner(type, listener) {
-    const listnerSet = this.#listeners.get(type);
+  removeEventListner(type: string, listener: () => void) {
+    const listenerSet = this.#listeners.get(type);
     if (!listenerSet) {
-      return;
+      throw new Error("Required");
     }
-    listnerSet.forEach((ownListener) => {
+    listenerSet.forEach((ownListener) => {
       if (ownListener === listener) {
-        listnerSet.delete(listener);
+        listenerSet.delete(listener);
       }
     });
   }
