@@ -1,0 +1,24 @@
+{
+  "name": "todoapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pistachiyoda/ts-todoapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pistachiyoda/ts-todoapp/issues"
+  },
+  "homepage": "https://github.com/pistachiyoda/ts-todoapp#readme",
+  "dependencies": {
+    "lite-server": "^2.6.1",
+    "typescript": "^4.8.4"
+  }
+}
