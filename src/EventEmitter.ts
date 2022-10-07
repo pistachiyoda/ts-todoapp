@@ -1,4 +1,4 @@
-export class EventEmitter {
+export class EventEmitter<T extends string> {
   #listeners = new Map<string, Set<() => void>>();
 
   addEventListener(type: string, listner: () => void) {
@@ -10,7 +10,7 @@ export class EventEmitter {
     listenerSet.add(listner);
   }
 
-  emit(type: string) {
+  emit(type: T) {
     const listenerSet = this.#listeners.get(type);
     if (!listenerSet) {
       return;

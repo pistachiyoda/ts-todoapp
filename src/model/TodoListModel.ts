@@ -1,7 +1,7 @@
 import { EventEmitter } from "../EventEmitter.js";
 import { TodoItemModel } from "./TodoItemModel.js";
 
-export class TodoListModel extends EventEmitter {
+export class TodoListModel extends EventEmitter<"change"> {
   #items: Array<TodoItemModel>;
 
   constructor(items = []) {
