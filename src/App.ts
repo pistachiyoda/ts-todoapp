@@ -16,7 +16,7 @@ export class App {
     this.#todoListModel.updateTodo({ id, completed });
   }
 
-  handleDelete({ id }: { id: number }) {
+  handleDelete({ id }: { id: string }) {
     this.#todoListModel.deleteTodo({ id });
   }
 
@@ -35,7 +35,7 @@ export class App {
         onUpdateTodo: ({ id, completed }: Status) => {
           this.handleUpdate({ id, completed });
         },
-        onDeleteTodo: ({ id }: { id: number }) => {
+        onDeleteTodo: ({ id }: { id: string }) => {
           this.handleDelete({ id });
         },
       });

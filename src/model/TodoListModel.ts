@@ -40,7 +40,7 @@ export class TodoListModel extends EventEmitter<"change"> {
     this.emitChange();
   }
 
-  deleteTodo({ id }: { id: number }) {
+  deleteTodo({ id }: { id: string }) {
     this.#items = this.#items.filter((todo) => {
       return todo.id !== id;
     });

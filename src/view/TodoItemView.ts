@@ -10,7 +10,7 @@ export class TodoItemView {
       onDeleteTodo,
     }: {
       onUpdateTodo: ({ id, completed }: Status) => void;
-      onDeleteTodo: ({ id }: { id: number }) => void;
+      onDeleteTodo: ({ id }: { id: string }) => void;
     }
   ) {
     const todoItemElement = todoItem.completed

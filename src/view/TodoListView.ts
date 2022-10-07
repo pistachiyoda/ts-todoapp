@@ -11,7 +11,7 @@ export class TodoListView {
       onDeleteTodo,
     }: {
       onUpdateTodo: ({ id, completed }: Status) => void;
-      onDeleteTodo: ({ id }: { id: number }) => void;
+      onDeleteTodo: ({ id }: { id: string }) => void;
     }
   ) {
     const todoListElement = element`<ul />`;
