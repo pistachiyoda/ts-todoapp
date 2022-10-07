@@ -2,6 +2,7 @@ import { TodoListModel } from "./model/TodoListModel.js";
 import { TodoItemModel } from "./model/TodoItemModel.js";
 import { TodoListView } from "./view/TodoListView.js";
 import { render } from "./view/html-util.js";
+import { Status } from "./interfaces";
 
 export class App {
   #todoListView = new TodoListView();
@@ -11,7 +12,7 @@ export class App {
     this.#todoListModel.addTodo(new TodoItemModel({ title, completed: false }));
   }
 
-  handleUpdate({ id, completed }: { id: number; completed: boolean }) {
+  handleUpdate({ id, completed }: Status) {
     this.#todoListModel.updateTodo({ id, completed });
   }
 
@@ -31,13 +32,7 @@ export class App {
     this.#todoListModel.onChange(() => {
       const todoItems = this.#todoListModel.getTodoItems();
       const todoListElement = this.#todoListView.createElement(todoItems, {
-        onUpdateTodo: ({
-          id,
-          completed,
-        }: {
-          id: number;
-          completed: boolean;
-        }) => {
+        onUpdateTodo: ({ id, completed }: Status) => {
           this.handleUpdate({ id, completed });
         },
         onDeleteTodo: ({ id }: { id: number }) => {

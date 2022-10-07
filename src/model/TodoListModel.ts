@@ -1,5 +1,6 @@
 import { EventEmitter } from "../EventEmitter.js";
 import { TodoItemModel } from "./TodoItemModel.js";
+import { Status } from "../interfaces";
 
 export class TodoListModel extends EventEmitter<"change"> {
   #items: Array<TodoItemModel>;
@@ -30,7 +31,7 @@ export class TodoListModel extends EventEmitter<"change"> {
     this.emitChange();
   }
 
-  updateTodo({ id, completed }: { id: number; completed: boolean }) {
+  updateTodo({ id, completed }: Status) {
     const todoItem = this.#items.find((todo) => todo.id === id);
     if (!todoItem) {
       return;

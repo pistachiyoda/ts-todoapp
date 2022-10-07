@@ -1,6 +1,7 @@
 import { TodoItemModel } from "../model/TodoItemModel.js";
 import { element } from "./html-util.js";
 import { TodoItemView } from "./TodoItemView.js";
+import { Status } from "../interfaces";
 
 export class TodoListView {
   createElement(
@@ -9,13 +10,7 @@ export class TodoListView {
       onUpdateTodo,
       onDeleteTodo,
     }: {
-      onUpdateTodo: ({
-        id,
-        completed,
-      }: {
-        id: number;
-        completed: boolean;
-      }) => void;
+      onUpdateTodo: ({ id, completed }: Status) => void;
       onDeleteTodo: ({ id }: { id: number }) => void;
     }
   ) {
