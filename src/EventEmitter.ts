@@ -1,7 +1,7 @@
 export class EventEmitter<T extends string> {
   #listeners = new Map<string, Set<() => void>>();
 
-  addEventListener(type: string, listner: () => void) {
+  addEventListener(type: T, listner: () => void) {
     if (!this.#listeners.has(type)) {
       this.#listeners.set(type, new Set());
     }
@@ -20,7 +20,7 @@ export class EventEmitter<T extends string> {
     });
   }
 
-  removeEventListner(type: string, listener: () => void) {
+  removeEventListner(type: T, listener: () => void) {
     const listenerSet = this.#listeners.get(type);
     if (!listenerSet) {
       throw new Error("Required");

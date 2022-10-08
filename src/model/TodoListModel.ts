@@ -5,7 +5,7 @@ import { Status } from "../interfaces";
 export class TodoListModel extends EventEmitter<"change"> {
   #items: Array<TodoItemModel>;
 
-  constructor(items = []) {
+  constructor(items: Array<TodoItemModel>) {
     super();
     this.#items = items;
   }
